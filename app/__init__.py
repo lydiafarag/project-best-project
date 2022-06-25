@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request
 from flask_googlemaps import GoogleMaps, Map
 from dotenv import load_dotenv
-from peewee import*
+from peewee import *
 
 load_dotenv()
 app = Flask(__name__ )
