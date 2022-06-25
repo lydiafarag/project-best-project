@@ -2,9 +2,17 @@ import os
 from flask import Flask, render_template, request
 from flask_googlemaps import GoogleMaps, Map
 from dotenv import load_dotenv
+from peewee import*
 
 load_dotenv()
 app = Flask(__name__, )
+mydb =MySQLDatabase(os,getenv("MYSQL_DATABASE"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    host=os.getenv("MYSQL_HOST"),
+    port=3306)
+
+print(mydb)
 GoogleMaps(app, key=os.getenv("MAPS_API_KEY"))
 
 
