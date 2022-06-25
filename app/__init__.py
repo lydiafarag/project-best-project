@@ -4,7 +4,7 @@ from flask_googlemaps import GoogleMaps, Map
 from dotenv import load_dotenv
 from peewee import *
 
-app = Flask(__name__ )
+app = Flask(__name__)
 mydb =MySQLDatabase(os.getenv("MYSQL_DATABASE"),
     user=os.getenv("MYSQL_USER"),
     password=os.getenv("MYSQL_PASSWORD"),
