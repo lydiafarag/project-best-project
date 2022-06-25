@@ -4,7 +4,6 @@ from flask_googlemaps import GoogleMaps, Map
 from dotenv import load_dotenv
 from peewee import *
 
-load_dotenv()
 app = Flask(__name__ )
 mydb =MySQLDatabase(os.getenv("MYSQL_DATABASE"),
     user=os.getenv("MYSQL_USER"),
@@ -13,6 +12,7 @@ mydb =MySQLDatabase(os.getenv("MYSQL_DATABASE"),
     port=3306)
 
 print(mydb)
+load_dotenv()
 GoogleMaps(app, key=os.getenv("MAPS_API_KEY"))
 
 
