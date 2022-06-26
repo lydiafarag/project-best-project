@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 from flask_googlemaps import GoogleMaps, Map
 from dotenv import load_dotenv
 from peewee import *
+import datetime
 
 app = Flask(__name__)
 mydb =MySQLDatabase(os.getenv("MYSQL_DATABASE"),
@@ -13,6 +14,19 @@ mydb =MySQLDatabase(os.getenv("MYSQL_DATABASE"),
 print("hello")
 print(mydb)
 load_dotenv()
+
+class TimelinePost(Model):
+    name = CharField()
+    email = CharField()
+    content = TextField()
+    created_at = DateTimeField(default=datetime.datetime.now)
+    
+    class Meta:
+        database = mydb
+mydb.connect()
+mydb.create_tables([TimelinePost])
+
+
 GoogleMaps(app, key=os.getenv("MAPS_API_KEY"))
 
 
