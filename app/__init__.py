@@ -5,7 +5,7 @@ from flask_googlemaps import GoogleMaps, Map
 from dotenv import load_dotenv
 from peewee import *
 import datetime
-from playhourse.shortcuts import model_to_dict
+from playhouse.shortcuts import model_to_dict
 
 app = Flask(__name__)
 mydb =MySQLDatabase(os.getenv("MYSQL_DATABASE"),
