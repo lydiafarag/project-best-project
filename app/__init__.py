@@ -4,7 +4,7 @@ from flask import Flask, render_template, request
 from flask_googlemaps import GoogleMaps, Map
 from dotenv import load_dotenv
 from peewee import *
-import datetime
+from datetime import datetime
 from playhouse.shortcuts import model_to_dict
 
 app = Flask(__name__)
@@ -154,11 +154,11 @@ def hobbies_and_map():
                            url=os.getenv("URL"))
 
 @app.route('/api/timeline_post', methods=['POST'])
-def post_time_line():
+def post_time_line_post():
     name = request.form['name']
     email = request.form['email']
     content = request.form['content']
-    time_post= TimelinePost.create(name=name, email=email, content=content)
+    timeline_post= TimelinePost.create(name=name, email=email, content=content)
 
     return model_to_dict(timeline_post) 
 
@@ -167,7 +167,6 @@ def get_time_line_post():
     return {
         'timeline_posts':[
             model_to_dict(p)
-            for p in 
-Timeline.select().order_by(Timeline.created_at.desc())            
+            for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())            
         ]
     }    
