@@ -17,16 +17,7 @@ print("hello")
 print(mydb)
 load_dotenv()
 
-class TimelinePost(Model):
-    name = CharField()
-    email = CharField()
-    content = TextField()
-    created_at = DateTimeField(default=datetime.datetime.now)
-    
-    class Meta:
-        database = mydb
-mydb.connect()
-mydb.create_tables([TimelinePost])
+
 
 
 GoogleMaps(app, key=os.getenv("MAPS_API_KEY"))
@@ -152,6 +143,17 @@ def hobbies_and_map():
                            trdmap=bobomap,
                            hobbies=hobbies,
                            url=os.getenv("URL"))
+
+class TimelinePost(Model):
+    name = CharField()
+    email = CharField()
+    content = TextField()
+    created_at = DateTimeField(default=datetime.now)
+    
+    class Meta:
+        database = mydb
+mydb.connect()
+mydb.create_tables([TimelinePost])
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
