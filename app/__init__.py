@@ -144,6 +144,13 @@ def hobbies_and_map():
                            hobbies=hobbies,
                            url=os.getenv("URL"))
 
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html',title="timeline")
+
+
+
+
 class TimelinePost(Model):
     name = CharField()
     email = CharField()
