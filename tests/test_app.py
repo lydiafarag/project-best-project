@@ -35,7 +35,15 @@ class AppTestCase(unittest.TestCase):
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         assert "Invalid Email" in html
+        response = self.client.post('/api/timeline_post', data={"name":"l+Ratio", "email":"john.com", "content":"Hello"})
+        assert response.status_code == 400
+        html = response.get_data(as_text=True)
+        assert "Invalid Email" in html
         response = self.client.post('/api/timeline_post', data={"name":"Joe", "email":"john@email.com"})
+        assert response.status_code == 400
+        html = response.get_data(as_text=True)
+        assert "Invalid Content" in html
+        response = self.client.post('/api/timeline_post', data={"name":"Joe", "email":"john@email.com", "content":""})
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         assert "Invalid Content" in html
