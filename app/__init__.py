@@ -1,3 +1,4 @@
+#added tests
 from crypt import methods
 import os
 from flask import Flask, render_template, request
