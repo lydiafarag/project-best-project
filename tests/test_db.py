@@ -1,6 +1,7 @@
 import unittest
 from peewee import *
 from app import TimelinePost
+from playhouse.shortcuts import model_to_dict
 
 MODELS = [TimelinePost]
 test_db = SqliteDatabase(':memory')
@@ -20,3 +21,8 @@ class TestTimelinePost(unittest.TestCase):
         assert first_post.id == 1
         second_post = TimelinePost.create(name='Jane Doe', email='jane@example.com', content='Hello, I am Jane')
         assert second_post.id == 2
+        posts = [post for post in TimelinePost.select().where(TimelinePost.id == 1)]
+        assert len(posts) == 1
+        assert posts[0].name == 'John Doe'
+        assert posts[0].email == 'john@example.com'
+        assert posts[0].content == 'Hello, I am John'
