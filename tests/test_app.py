@@ -1,3 +1,4 @@
+#Added Fuxes
 import unittest
 import os
 from urllib import response
@@ -47,3 +48,6 @@ class AppTestCase(unittest.TestCase):
         assert response.status_code == 400
         html = response.get_data(as_text=True)
         assert "Invalid Content" in html
+        response = self.client.get('/api/timeline_post')
+        json = response.get_json()
+        assert len(json["timeline_posts"]) == 0
