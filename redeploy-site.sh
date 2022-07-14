@@ -6,13 +6,15 @@ cd project-best-project
 git fetch && git reset origin/main --hard
 
 #enter python venv and install subsequent dependancies
-source python3-virtualenv/bin/activate
-pip install -r requirements.txt
+#source python3-virtualenv/bin/activate
+#pip install -r requirements.txt
 
 #starting flask in a detached tmux session
 #tmux new-session -d -s Flask
 #tmux send-keys 'source python3-virtualenv/bin/activate' C-m
 #tmux send-keys 'flask run --host=0.0.0.0' C-m
 #tmux detach -s Flask
-systemctl daemon-reload
-systemctl restart myportfolio
+#systemctl daemon-reload
+#systemctl restart myportfolio
+docker compose -f docker-compose.prod.yml down
+docker compose -f docker-compose.prod.yml up -d --build
