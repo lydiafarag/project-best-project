@@ -2,7 +2,7 @@
 #here we kill any existing tmux sessions
 #tmux kill-server
 #enter into the project
-cd project-best-project
+cd ~/project-best-project
 git fetch && git reset origin/main --hard
 
 #enter python venv and install subsequent dependancies
