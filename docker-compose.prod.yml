@@ -6,8 +6,6 @@ services:
     restart: always
     env_file:
       - .env
-    ports:
-      - "5000:5000"
     depends_on:
       - mysql
 
@@ -19,9 +17,6 @@ services:
       - .env
     volumes:
       - mydatabase:/var/lib/mysql
-
-volumes:
-  mydatabase:/var/lib/mysql
 
 nginx:
   container_name: nginx
