@@ -56,7 +56,7 @@ def index():
                                {
                                    "name": "Meta",
                                    "role": "Production Engineer",
-                                   "date": "XX 2021 - XX 2022"
+                                   "date": "I currently work heere! Its very cool!"
                                },
                                {
                                    "name": "Google",
