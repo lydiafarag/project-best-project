@@ -1,2 +1,2 @@
 #!/bin/bash
-$PWD/python -m unittest discover -v tests/
+python -m unittest discover -v tests/
